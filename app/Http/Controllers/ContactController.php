@@ -45,14 +45,12 @@ class ContactController extends Controller
             'email' => $request->get('email'),
             'text' => $request->get('text'),
         );
-        
+
         // Send mail
         Mail::send('emails.contact', $data, function ($message) use ($data) {
-            //$message->to('info@huh.school', 'HUH? School')
-            $message->to('nikolay.a@cudev.org', 'HUH? School')
-                //->bcc('ferenax@gmail.com')
+            $message->to(config('mail.contact_email'), 'HUH? School')
                 ->subject('Contact');
-            $message->from('info@huh.school', $data['name']);
+            $message->from(config('mail.from.address'), $data['name']);
         });
         
         return response()->json([

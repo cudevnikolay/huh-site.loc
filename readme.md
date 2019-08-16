@@ -1,7 +1,7 @@
-##Instruction
+## Instruction
 1. Add .env file like .env.example
 - change DB connections to empty DB
-- set `MAIL_USERNAME` and `MAIL_PASSWORD`
+- set `MAIL_USERNAME` and `MAIL_PASSWORD`, `MAIL_FROM_ADDRESS`, `MAIL_CONTACT_EMAIL` - email where will be sent contact form
 - set `GOOGLE_RECAPTCHA_KEY` if you use a different domain, not this one `huh-site.loc`
 
 2. run:
