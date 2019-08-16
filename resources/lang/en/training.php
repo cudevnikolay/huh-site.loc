@@ -1,0 +1,21 @@
+<?php
+return [
+    'title' => 'Training Intelligence Insights',
+    'description' => 'Training description',
+    'item1_title' => 'Item 1 title',
+    'item1_text' => 'Item 1 text',
+    'item2_title' => 'Item 2 title',
+    'item2_text' => 'Item 2 text',
+    'item3_title' => 'Item 3 title',
+    'item3_text' => 'Item 3 text',
+    'item4_title' => 'Item 4 title',
+    'item4_text' => 'Item 4 text',
+    'item5_title' => 'Item 5 title',
+    'item5_text' => 'Item 5 text',
+    'item6_title' => 'Item 6 title',
+    'item6_text' => 'Item 6 text',
+    'item7_title' => 'Item 7 title',
+    'item7_text' => 'Item 7 text',
+    'item8_title' => 'Item 8 title',
+    'item8_text' => 'Item 8 text',
+];
