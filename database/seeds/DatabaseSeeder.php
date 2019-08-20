@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TranslationsSeeder::class,
+            SocialLinksSeeder::class,
         ]);
     }
 }

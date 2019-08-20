@@ -117,6 +117,16 @@ return [
             'url'         => '/admin/languages',
             'icon'        => 'fas fa-fw fa-language'
         ],
+        [
+            'text'    => 'Contact',
+            'icon'    => 'fas fa-fw fa-info',
+            'submenu' => [
+                [
+                    'text' => 'Social Links',
+                    'url'  => '/admin/social-links',
+                ],
+            ],
+        ],
         /*['header' => 'main_navigation'],
         [
             'text' => 'blog',

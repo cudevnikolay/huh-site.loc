@@ -16,4 +16,8 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->namespace('Admin')->group
     Route::post('languages/{id}/switch-status', 'TranslationsController@switchStatus');
     
     Route::post('api/translations', 'Api\TranslationsApiController@index');
+
+    //Social links
+    Route::get('social-links', 'SocialLinksController@index')->name('social-links.index');
+    Route::post('social-links/update', 'SocialLinksController@update')->name('social-links.update');
 });

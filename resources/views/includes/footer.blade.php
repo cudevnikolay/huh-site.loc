@@ -87,11 +87,13 @@
         <!-- End Footer Logo -->
         <!-- Social Links -->
         <div class="footer-social-links mb-110 mb-xs-60">
-            <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-            <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
-            <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
-            <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+            @foreach ($socialLinks as $socialLink)
+                @if ($socialLink['link'])
+                    <a href="{{ $socialLink['link'] }}" title="{{ ucfirst($socialLink['alias']) }}" target="_blank">
+                        <i class="fa fa-{{ $socialLink['alias'] }}"></i>
+                    </a>
+                @endif
+            @endforeach
         </div>
         <!-- End Social Links -->
     </div>
