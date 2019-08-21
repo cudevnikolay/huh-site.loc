@@ -169,6 +169,7 @@ return [
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Waavi\Translation\TranslationServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...

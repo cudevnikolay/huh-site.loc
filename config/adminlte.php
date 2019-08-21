@@ -113,6 +113,11 @@ return [
             'icon'        => 'fas fa-fw fa-file'
         ],
         [
+            'text' => 'Team',
+            'url'  => 'admin/team',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text'        => 'Languages',
             'url'         => '/admin/languages',
             'icon'        => 'fas fa-fw fa-language'

@@ -2866,9 +2866,11 @@ a.logo:hover{
 .team-item-image{
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 .team-item-image img{
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 }
 .team-item-image:after{
     content: " ";

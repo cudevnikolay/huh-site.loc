@@ -5,6 +5,7 @@
 /public/js
 /public/css
 /storage/*.key
+/public/img/*
 /vendor
 .idea
 .env

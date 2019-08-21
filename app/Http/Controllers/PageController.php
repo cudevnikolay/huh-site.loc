@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\TeamService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,6 +20,7 @@ class PageController extends Controller
     /**
      * Show the platform page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function platform()
     {
@@ -28,15 +30,22 @@ class PageController extends Controller
     /**
      * Show the team page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function team()
     {
-        return view('pages.team');
+        $teamService = new TeamService();
+        $team = $teamService->getAllActive();
+
+        return view('pages.team', [
+            'team' => $team,
+        ]);
     }
 
     /**
      * Show the solution page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function solution()
     {
@@ -46,6 +55,7 @@ class PageController extends Controller
     /**
      * Show the training page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function training()
     {
@@ -55,6 +65,7 @@ class PageController extends Controller
     /**
      * Show the ia Solution page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function iaSolution()
     {
@@ -64,6 +75,7 @@ class PageController extends Controller
     /**
      * Show the contact page
      *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function contact()
     {

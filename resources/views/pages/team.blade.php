@@ -32,113 +32,38 @@
                     </div>
                 </div>
             </div>
-            <div class="row multi-columns-row">
-                <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0">
-                    <div class="team-item">
-                        <div class="team-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                            <div class="team-item-detail">
-                                <h4 class="font-alt normal">Nice to meet!</h4>
-                                <p>
-                                    Curabitur augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta.
-                                </p>
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+            @if ($team)
+                <div class="row multi-columns-row">
+                    @foreach ($team as $index => $member)
+                        <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
+                            <div class="team-item">
+                                <div class="team-item-image">
+                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($member->image, 'team') }}" alt="{{ $member->name }}" />
+                                    {{--<div class="team-item-detail">
+                                        <h4 class="font-alt normal">Nice to meet!</h4>
+                                        <p>
+                                            Curabitur augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta.
+                                        </p>
+                                        <div class="team-social-links">
+                                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+                                        </div>
+                                    </div>--}}
+                                </div>
+                                <div class="team-item-descr font-alt">
+                                    <div class="team-item-name">
+                                        {{ $member->name }}
+                                    </div>
+                                    <div class="team-item-role">
+                                        {{ $member->position }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-                            <div class="team-item-role">
-                                Web engineer
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="team-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                            <div class="team-item-detail">
-                                <h4 class="font-alt normal">Nice to meet!</h4>
-                                <p>
-                                    Curabitur augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta.
-                                </p>
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-                            <div class="team-item-role">
-                                Web engineer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                            <div class="team-item-detail">
-                                <h4 class="font-alt normal">Whats Up!</h4>
-                                <p>
-                                    Adipiscing elit curabitur eu&nbsp;adipiscing lacus eu&nbsp;adipiscing lacus, a&nbsp;iaculis diam.
-                                </p>
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Steve ANDERS
-                            </div>
-                            <div class="team-item-role">
-                                Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="team-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                            <div class="team-item-detail">
-                                <h4 class="font-alt normal">Hi to all!</h4>
-                                <p>
-                                    Adipiscing elit curabitur eu&nbsp;adipiscing lacus eu&nbsp;adipiscing lacus, a&nbsp;iaculis diam.
-                                </p>
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Emma Connor
-                            </div>
-                            <div class="team-item-role">
-                                Creative Director
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
     <!-- End Section -->
