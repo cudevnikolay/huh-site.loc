@@ -9,7 +9,7 @@
         <div class="js-height-full">
             <div class="home-content container">
                 <div class="home-text">
-                    <h1 class="hs-line-8 font-alt mb-50 mb-xs-30">
+                    <h1 class="hs-line-11 font-alt mb-50 mb-xs-30">
                         {{ __('home.h1_high_usage_hub') }}
                     </h1>
                     <h2 class="hs-line-11 font-alt mb-50 mb-xs-30">
@@ -32,10 +32,6 @@
         <div class="container relative">
             <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
                 {{ __('home.block_platform_title') }}
-                <a href="{{ route('platform') }}" class="section-more right">
-                    {{ __('home.block_platform_learn_mere') }}
-                    <i class="fa fa-angle-right"></i>
-                </a>
             </h2>
             <div class="section-text">
                 <div class="row">
@@ -47,6 +43,13 @@
                     </div>
                     <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
                         {{ __('home.block_platform_sub_text2') }}
+
+                        <div class="hs-line-11 text-center pt-3">
+                            <a href="{{ route('platform') }}" class="section-more">
+                                {{ __('home.block_platform_learn_mere') }}
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,6 +95,8 @@
             </div>
         </div>
     </section>
+
+    <hr class="mt-0 mb-0 ">
 
     <!-- Section -->
     <section class="page-section" id="our-team">
@@ -151,15 +156,34 @@
     <section class="page-section pt-0 pb-0 banner-section bg-dark" data-background="images/full-width-images/section-bg-2.jpg">
         <div class="container relative">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="mt-140 mt-lg-80 mb-140 mb-lg-80">
                         <div class="banner-content">
                             <h3 class="banner-heading font-alt">{{ __('home.block_awards_title') }}</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 banner-image wow fadeInUp">
-                    <img src="images/promo-1.png" alt="" />
+                <div class="col-sm-8 wow fadeInUp">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-1.png') }}">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-2.png') }}">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-3.png') }}">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-4.png') }}">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-5.png') }}">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('static/image/awards/awards-6.png') }}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -320,7 +344,7 @@
                         <div class="clearfix">
                             <div class="cf-left-col">
                                 <div class="form-tip">
-                                    <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                                    <div class="g-recaptcha" data-sitekey="{{ config('app.google_reCaptcha_key') }}"></div>
                                 </div>
                             </div>
                             <div class="cf-right-col">

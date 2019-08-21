@@ -87,20 +87,6 @@
         </div>
     </section>
     <!-- End Section -->
-    <!-- Call Action Section -->
-    <section class="small-section bg-dark">
-        <div class="container relative">
-            <div class="align-center">
-                <h3 class="banner-heading font-alt">{{ __('solution.contact_block_title') }}</h3>
-                <div>
-                    <a href="{{ route('contact') }}" class="btn btn-mod btn-w btn-medium btn-round">
-                        {{ __('solution.contact_block_button') }}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Call Action Section -->
     <!-- Section -->
     <section class="page-section">
         <div class="container relative">
@@ -237,4 +223,18 @@
         </div>
     </section>
     <!-- End Section -->
+    <!-- Call Action Section -->
+    <section class="small-section bg-dark">
+        <div class="container relative">
+            <div class="align-center">
+                <h3 class="banner-heading font-alt">{{ __('solution.contact_block_title') }}</h3>
+                <div>
+                    <a href="{{ route('contact') }}" class="btn btn-mod btn-w btn-medium btn-round">
+                        {{ __('solution.contact_block_button') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call Action Section -->
 @endsection
