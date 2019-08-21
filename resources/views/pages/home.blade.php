@@ -248,23 +248,49 @@
     <!-- End Section -->
 
     <!-- Testimonials Section -->
-    <section class="page-section bg-dark bg-dark-alfa-90 " data-background="images/full-width-images/section-bg-2.jpg">
-        <div class="container relative">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 align-center">
-                    <div class="section-icon">
-                        <span class="icon-quote"></span>
+    @if ($quotes)
+        <section class="page-section bg-dark bg-dark-alfa-90 fullwidth-slider" data-background="{{ asset('images/full-width-images/section-bg-2.jpg') }}">
+            @foreach ($quotes as $quote)
+                <!-- Slide Item -->
+                <div>
+                    <div class="container relative">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2 align-center">
+                                <div class="section-icon">
+                                    <span class="icon-quote"></span>
+                                </div>
+                                <h3 class="small-title font-alt">{{ $quote->title }}</h3>
+                                <blockquote class="testimonial white">
+                                    <p>
+                                        {{ $quote->text }}
+                                    </p>
+                                    <footer class="testimonial-author">
+                                        {{ $quote->author }}
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="small-title font-alt">{{ __('home.block_confiances_title') }}</h3>
-                    <blockquote class="testimonial white">
-                        <p>
-                            {{ __('home.block_confiances_sub_text') }}
-                        </p>
-                    </blockquote>
                 </div>
-            </div>
-        </div>
-    </section>
+                <!-- End Slide Item -->
+            @endforeach
+            {{--<div class="container relative">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 align-center">
+                        <div class="section-icon">
+                            <span class="icon-quote"></span>
+                        </div>
+                        <h3 class="small-title font-alt">{{ __('home.block_confiances_title') }}</h3>
+                        <blockquote class="testimonial white">
+                            <p>
+                                {{ __('home.block_confiances_sub_text') }}
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>--}}
+        </section>
+    @endif
     <!-- End Testimonials Section -->
 
     <!-- Contact Section -->

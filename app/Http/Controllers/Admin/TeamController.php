@@ -64,10 +64,10 @@ class TeamController extends Controller
         if (!$this->teamService->store($dataAll, $img)) {
             return redirect()->route('team.create')
                 ->withInput()
-                ->with('notifications', ['type' => 'error', 'message' => 'Link save error']);
+                ->with('notifications', ['type' => 'error', 'message' => 'Team save error']);
         } else {
             return redirect()->route('team.index')
-                ->with('notifications', ['type' => 'success', 'message' => 'Link has been saved']);
+                ->with('notifications', ['type' => 'success', 'message' => 'Team has been saved']);
         }
     }
 
@@ -109,10 +109,10 @@ class TeamController extends Controller
         if (!$this->teamService->edit($dataAll, $img)) {
             return redirect()->route('team.edit', ['id' => $id])
                 ->withInput()
-                ->with('notifications', ['type' => 'error', 'message' => 'Link save error']);
+                ->with('notifications', ['type' => 'error', 'message' => 'Team save error']);
         } else {
             return redirect()->route('team.index')
-                ->with('notifications', ['type' => 'success', 'message' => 'Link has been saved']);
+                ->with('notifications', ['type' => 'success', 'message' => 'Team has been saved']);
         }
     }
     

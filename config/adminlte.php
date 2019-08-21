@@ -123,6 +123,11 @@ return [
             'icon'        => 'fas fa-fw fa-language'
         ],
         [
+            'text' => 'Quotes',
+            'url'  => 'admin/quotes',
+            'icon' => 'fas fa-fw fa-comment',
+        ],
+        [
             'text'    => 'Contact',
             'icon'    => 'fas fa-fw fa-info',
             'submenu' => [

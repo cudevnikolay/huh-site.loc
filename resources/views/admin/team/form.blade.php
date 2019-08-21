@@ -11,7 +11,7 @@
     <div class="form-group {{ $errors->has('position') ? 'has-error' : '' }}">
         {{ Form::label('position', 'Position', ['class' => 'col-md-2 col-sm-2 control-label']) }}
         <div class="col-md-4 col-sm-10 col-xs-12">
-            {{ Form::text('position', isset($team->alt) ? $team->alt : null, ['class' => 'form-control', 'placeholder' => 'Position', 'maxlength' => 255]) }}
+            {{ Form::text('position', isset($team->position) ? $team->position : null, ['class' => 'form-control', 'placeholder' => 'Position', 'maxlength' => 255]) }}
             @if ($errors->has('position'))
                 <span class="help-block">{{ $errors->first('position') }}</span>
             @endif

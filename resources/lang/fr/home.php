@@ -24,8 +24,6 @@ return [
     'block_training_title' => 'Training Intelligence Insights',
     'block_training_sub_text' => 'Grâce à notre technologie, recevez en temps réel des informations pertinentes et pilotez la stratégie de votre entreprise.',
     'block_training_learn_more' => 'En savoir plus',
-    'block_confiances_title' => 'Ils nous font confiances',
-    'block_confiances_sub_text' => 'Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor.',
     'block_contact_description' => 'Retrouvez nous à Paris, France et Munich, Allemagne',
     'block_contact_phone' => 'Call us',
     'block_contact_address_french' => 'ADDRESS FRANCE',

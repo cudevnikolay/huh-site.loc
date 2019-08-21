@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\TeamService;
-use Illuminate\Http\Request;
+use App\Services\{
+    TeamService, QuotesService
+};
 
 class HomeController extends Controller
 {
@@ -26,9 +27,13 @@ class HomeController extends Controller
     {
         $teamService = new TeamService();
         $team = $teamService->getActiveByLimit(4);
+    
+        $quotesService = new QuotesService();
+        $quotes = $quotesService->getAllActive();
 
         return view('pages.home', [
             'team' => $team,
+            'quotes' => $quotes,
         ]);
     }
 }

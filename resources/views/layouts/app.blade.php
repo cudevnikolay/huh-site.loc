@@ -54,6 +54,7 @@
     <script src="{{ asset('js/theme/jquery.appear.js') }}"></script>
     <script src="{{ asset('js/theme/jquery.sticky.js') }}"></script>
     <script src="{{ asset('js/theme/jquery.parallax-1.1.3.js') }}"></script>
+    <script src="{{ asset('js/theme/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/theme/jquery.fitvids.js') }}"></script>
     <script src="{{ asset('js/theme/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('js/theme/imagesloaded.pkgd.min.js') }}"></script>

@@ -78,8 +78,7 @@ class TranslationService
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
-        }
-        else {
+        } else {
             $languages =  Language::where('locale', 'LIKE', "%{$search}%")
                 ->orWhere('name', 'LIKE', "%{$search}%")
                 ->offset($start)

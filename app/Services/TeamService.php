@@ -63,10 +63,11 @@ class TeamService
      * @param $start
      * @param $order
      * @param $dir
+     * @param $search
      * @param $draw
      * @return array
      */
-    public function getDataTableData($limit, $start, $order, $dir, $draw):array
+    public function getDataTableData($limit, $start, $order, $dir, $search, $draw):array
     {
         $columns = [
             0 => 'id',
@@ -80,16 +81,30 @@ class TeamService
         
         # Total number of records in the array
         $totalFiltered = $totalData = Team::count();
-        
+
         $limit = $limit == -1 ? $totalData : $limit;
         
         $order = $columns[$order];
         
         # Get all the entries
-        $team = Team::offset($start)
-            ->limit($limit)
-            ->orderBy($order,$dir)
-            ->get();
+        if(empty($search))
+        {
+            $team = Team::offset($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
+        } else {
+            $team =  Team::where('position', 'LIKE', "%{$search}%")
+                ->orWhere('name', 'LIKE', "%{$search}%")
+                ->offset($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
+        
+            $totalFiltered = Team::where('position', 'LIKE', "%{$search}%")
+                ->orWhere('name', 'LIKE', "%{$search}%")
+                ->count();
+        }
         
         foreach ($team as $key => $item)
         {

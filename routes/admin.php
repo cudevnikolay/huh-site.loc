@@ -31,4 +31,15 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->namespace('Admin')->group
     //Team api
     Route::post('api/team/{id}/switch-status', 'Api\TeamApiController@switchStatus');
     Route::post('api/team', 'Api\TeamApiController@index');
+    
+    //Quotes
+    Route::get('quotes', 'QuotesController@index')->name('quotes.index');
+    Route::get('quotes/{id}/edit', 'QuotesController@edit')->name('quotes.edit');
+    Route::get('quotes/create', 'QuotesController@create')->name('quotes.create');
+    Route::delete('quotes/{id}', 'QuotesController@delete')->name('quotes.delete');
+    Route::put('quotes/{id}/edit', 'QuotesController@update')->name('quotes.update');
+    Route::post('quotes/store', 'QuotesController@store')->name('quotes.store');
+    //Quotes api
+    Route::post('api/quotes/{id}/switch-status', 'Api\QuotesApiController@switchStatus');
+    Route::post('api/quotes', 'Api\QuotesApiController@index');
 });
