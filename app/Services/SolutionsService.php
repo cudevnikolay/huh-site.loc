@@ -335,9 +335,9 @@ class SolutionsService
         }
 
         return [
-            'global' => Solution::byType(Solution::TYPE_GLOBAL)->get(),
-            'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->get(),
-            'languages' => Solution::byType(Solution::TYPE_LANGUAGES)->get(),
+            'global' => Solution::byType(Solution::TYPE_GLOBAL)->enabled()->get(),
+            'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->enabled()->get(),
+            'languages' => Solution::byType(Solution::TYPE_LANGUAGES)->enabled()->get(),
         ];
     }
 }

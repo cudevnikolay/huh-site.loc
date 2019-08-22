@@ -55,14 +55,14 @@ class SettingsController extends Controller
 
             return redirect()->back()->with(
                 'notifications',
-                ['type' => 'success', 'message' => 'Social links saved']
+                ['type' => 'success', 'message' => 'Contact info saved']
             );
         } catch(\Exception $e) {
             report($e);
             
             return redirect()->back()->with(
                 'notifications',
-                ['type' => 'error', 'message' => 'Social links edit error']
+                ['type' => 'error', 'message' => 'Contact info edit error']
             );
         }
     }
