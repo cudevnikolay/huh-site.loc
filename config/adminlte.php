@@ -142,7 +142,7 @@ return [
                 ],
                 [
                     'text' => 'Info',
-                    'url'  => '/admin/info',
+                    'url'  => '/admin/contact-info',
                 ],
             ],
         ],
