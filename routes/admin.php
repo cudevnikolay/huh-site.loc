@@ -53,4 +53,8 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->namespace('Admin')->group
     //Solutions api
     Route::post('api/solutions/{id}/switch-status', 'Api\SolutionsApiController@switchStatus');
     Route::post('api/solutions', 'Api\SolutionsApiController@index');
+    
+    //Contact info
+    Route::get('contact-info', 'SettingsController@contactInfo')->name('contact-info.index');
+    Route::post('contact-info/update', 'SettingsController@updetaCntactInfo')->name('contact-info.update');
 });

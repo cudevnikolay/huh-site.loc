@@ -30,7 +30,7 @@
                                     {{ __('contact.phone') }}
                                 </div>
                                 <div class="ci-text">
-                                    +61 3 8376 6284
+                                    {{ Setting::get('phone') }}
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                     {{ __('contact.email') }}
                                 </div>
                                 <div class="ci-text">
-                                    <a href="mailto:support@bestlooker.pro">support@bestlooker.pro</a>
+                                    <a href="mailto:{{ Setting::get('email') }}">{{ Setting::get('email') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                     {{ __('contact.address') }}
                                 </div>
                                 <div class="ci-text">
-                                    245 Quigley Blvd, Ste K
+                                    {{ Setting::get('address_french') }}
                                 </div>
                             </div>
                         </div>
@@ -69,8 +69,7 @@
                                     {{ __('contact.worked_time') }}
                                 </div>
                                 <div class="ci-text">
-                                    Monday-Friday: 9am to 5pm <br />
-                                    Saturday, Sunday &mdash; clossed
+                                    {{ Setting::get('worked_time') }}
                                 </div>
                             </div>
                         </div>

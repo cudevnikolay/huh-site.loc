@@ -315,7 +315,7 @@
                                     {{ __('home.block_contact_phone') }}
                                 </div>
                                 <div class="ci-text">
-                                    01 82 88 82 49
+                                    {{ Setting::get('phone') }}
                                 </div>
                             </div>
                         </div>
@@ -328,7 +328,7 @@
                                     {{ __('home.block_contact_address_french') }}
                                 </div>
                                 <div class="ci-text">
-                                    36 rue de Cléry 75002 Paris
+                                    {{ Setting::get('address_french') }}
                                 </div>
                             </div>
                         </div>
@@ -341,7 +341,7 @@
                                     {{ __('home.block_contact_address_germany') }}
                                 </div>
                                 <div class="ci-text">
-                                    33 avenue Pierre Brossolette 94000 Créteil
+                                    {{ Setting::get('address_germany') }}
                                 </div>
                             </div>
                         </div>

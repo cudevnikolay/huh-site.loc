@@ -140,6 +140,10 @@ return [
                     'text' => 'Social Links',
                     'url'  => '/admin/social-links',
                 ],
+                [
+                    'text' => 'Info',
+                    'url'  => '/admin/info',
+                ],
             ],
         ],
         /*['header' => 'main_navigation'],
