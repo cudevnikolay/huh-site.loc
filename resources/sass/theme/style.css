@@ -3813,6 +3813,9 @@ a.logo:hover{
     color: #111;
 }
 
+.solution-item-image img {
+    width: 100%;
+}
 
 /* ==============================
    Contact section

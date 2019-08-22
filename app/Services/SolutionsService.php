@@ -319,4 +319,25 @@ class SolutionsService
             return Ucfirst(str_replace('_', ' ', $item));
         }, Solution::getTypesById());
     }
+
+    /**
+     * Get solutions by types
+     *
+     * @param $type
+     * @return array
+     */
+    public function getByTypes($type = null)
+    {
+        if ($type) {
+            return [
+                $type => Solution::byType($type)->get(),
+            ];
+        }
+
+        return [
+            'global' => Solution::byType(Solution::TYPE_GLOBAL)->get(),
+            'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->get(),
+            'languages' => Solution::byType(Solution::TYPE_LANGUAGES)->get(),
+        ];
+    }
 }

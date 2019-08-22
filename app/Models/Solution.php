@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solution extends Model
 {
-    const TYPE_TPE_1 = 1;
-    const TYPE_TPE_2 = 2;
-    const TYPE_TPE_3 = 3;
+    const TYPE_GLOBAL = 1;
+    const TYPE_INDUSTRIES = 2;
+    const TYPE_LANGUAGES = 3;
 
     /**
      * Get solution's types
@@ -18,9 +18,9 @@ class Solution extends Model
     public static function getTypes()
     {
         return [
-            'type_1' => Solution::TYPE_TPE_1,
-            'type_2' => Solution::TYPE_TPE_2,
-            'type_3' => Solution::TYPE_TPE_3,
+            'global' => Solution::TYPE_GLOBAL,
+            'industries' => Solution::TYPE_INDUSTRIES,
+            'languages' => Solution::TYPE_LANGUAGES,
         ];
     }
 
@@ -71,5 +71,18 @@ class Solution extends Model
     public function scopeEnabled($query)
     {
         return $query->where('enabled', 1);
+    }
+    
+    /**
+     * Get by list type
+     *
+     * @param $query
+     * @param $type
+     *
+     * @return mixed
+     */
+    public function scopeByType($query, $type)
+    {
+        return $query->where('type', $type);
     }
 }

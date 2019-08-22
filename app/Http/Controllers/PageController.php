@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\TeamService;
+use App\Services\SolutionsService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -49,7 +50,12 @@ class PageController extends Controller
      */
     public function solution()
     {
-        return view('pages.solution');
+        $solutionsService = new SolutionsService();
+        $solutions = $solutionsService->getByTypes();
+
+        return view('pages.solution', [
+            'solutions' => $solutions,
+        ]);
     }
     
     /**

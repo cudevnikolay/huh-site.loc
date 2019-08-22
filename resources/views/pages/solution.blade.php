@@ -33,56 +33,24 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Thomas Rhythm
-                            </div>
-                            <div class="team-item-role">
-                                Art Director
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-                            <div class="team-item-role">
-                                Web engineer
+                @if (!empty($solutions['global']))
+                    @foreach ($solutions['global'] as $index => $solution)
+                        <!-- Team item -->
+                        <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
+                            <div class="solution-item">
+                                <div class="solution-item-image">
+                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="{{ $solution->title }}" />
+                                </div>
+                                <div class="team-item-descr font-alt">
+                                    <div class="team-item-name">
+                                        {{ $solution->title }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Steve ANDERS
-                            </div>
-                            <div class="team-item-role">
-                                Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <!-- End Team item -->
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -101,56 +69,24 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Thomas Rhythm
-                            </div>
-                            <div class="team-item-role">
-                                Art Director
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-                            <div class="team-item-role">
-                                Web engineer
+                @if (!empty($solutions['industries']))
+                    @foreach ($solutions['industries'] as $index => $solution)
+                        <!-- Team item -->
+                        <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
+                            <div class="solution-item">
+                                <div class="solution-item-image">
+                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="{{ $solution->title }}" />
+                                </div>
+                                <div class="team-item-descr font-alt">
+                                    <div class="team-item-name">
+                                        {{ $solution->title }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Steve ANDERS
-                            </div>
-                            <div class="team-item-role">
-                                Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <!-- End Team item -->
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -169,56 +105,24 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Thomas Rhythm
-                            </div>
-                            <div class="team-item-role">
-                                Art Director
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-                            <div class="team-item-role">
-                                Web engineer
+                @if (!empty($solutions['languages']))
+                    @foreach ($solutions['languages'] as $index => $solution)
+                        <!-- Team item -->
+                        <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
+                            <div class="solution-item">
+                                <div class="solution-item-image">
+                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="{{ $solution->title }}" />
+                                </div>
+                                <div class="team-item-descr font-alt">
+                                    <div class="team-item-name">
+                                        {{ $solution->title }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Team item -->
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="solution-item">
-                        <div class="solution-item-image">
-                            <img src="{{ asset('images/stub-2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-descr font-alt">
-                            <div class="team-item-name">
-                                Steve ANDERS
-                            </div>
-                            <div class="team-item-role">
-                                Developer
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <!-- End Team item -->
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
