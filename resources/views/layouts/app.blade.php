@@ -20,7 +20,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="appear-animate">
-
     <!-- Page Loader -->
     <div class="page-loader">
         <div class="loader">Loading...</div>

@@ -14,15 +14,12 @@ use Intervention\Image\Facades\Image;
  */
 class ImageSizeHelper
 {
-    static public function compareSize( $image):bool
+    static public function compareSize($image, $width, $height):bool
     {
         $realWidth = Image::make($image)->width();
         $realHeight = Image::make($image)->height();
 
-        $configWidth = config('imagesize.team.width');
-        $configHeight = config('imagesize.team.height');
-
-        if ($realWidth < $configWidth AND $realHeight < $configHeight) {
+        if ($realWidth < $width AND $realHeight < $height) {
             return true;
         } else {
             return false;

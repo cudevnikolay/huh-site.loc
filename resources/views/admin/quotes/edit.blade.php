@@ -3,7 +3,7 @@
 @section('title', 'Edit Quote - Admin Panel | ' . config('app.name'))
 
 @section('content_header')
-    <h1>Edit Footer Link</h1>
+    <h1>Edit Quote</h1>
 @stop
 
 @section('content')

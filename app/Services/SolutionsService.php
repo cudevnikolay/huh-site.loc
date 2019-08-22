@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Team;
+use App\Models\Solution;
 use App\Helpers\{
     ImageHelper, ImageSizeHelper
 };
@@ -10,38 +10,38 @@ use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Filesystem\Filesystem;
 
-class TeamService
+class SolutionsService
 {
     /**
-     * Get all team members
+     * Get all Solutions
      *
-     * @return Team
+     * @return Solution
      */
     public function getAll()
     {
-        return Team::all();
+        return Solution::all();
     }
     
     /**
-     * Get all active team members
+     * Get all active Solutions
      *
-     * @return Team
+     * @return Solution
      */
     public function getAllActive()
     {
-        return Team::enabled()->get();
+        return Solution::enabled()->get();
     }
     
     /**
-     * Get all active team members
+     * Get all active Solutions
      *
      * @param $count
      *
-     * @return Team
+     * @return Solution
      */
     public function getActiveByLimit($count)
     {
-        return Team::enabled()->limit($count)->get();
+        return Solution::enabled()->limit($count)->get();
     }
     
     /**
@@ -50,9 +50,9 @@ class TeamService
      * @param $id
      * @return mixed
      */
-    public function getById(int $id):Team
+    public function getById(int $id):Solution
     {
-        return Team::findOrFail($id);
+        return Solution::findOrFail($id);
     }
     
     /**
@@ -73,14 +73,14 @@ class TeamService
             0 => 'id',
             1 => 'enabled',
             2 => 'image',
-            3 => 'name',
-            4 => 'position'
+            3 => 'title',
+            4 => 'type',
         ];
         
         $data = [];
         
         # Total number of records in the array
-        $totalFiltered = $totalData = Team::count();
+        $totalFiltered = $totalData = Solution::count();
 
         $limit = $limit == -1 ? $totalData : $limit;
         
@@ -89,33 +89,33 @@ class TeamService
         # Get all the entries
         if(empty($search))
         {
-            $team = Team::offset($start)
+            $solutions = Solution::offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
         } else {
-            $team =  Team::where('position', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
+            $solutions =  Solution::where('title', 'LIKE', "%{$search}%")
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
         
-            $totalFiltered = Team::where('position', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
+            $totalFiltered = Solution::where('title', 'LIKE', "%{$search}%")
                 ->count();
         }
-        
-        foreach ($team as $key => $item)
+    
+        $solutionTypes = $this->getSolutionTypes();
+        foreach ($solutions as $key => $item)
         {
             $nestedData['index']   =  $key + 1;
-            $nestedData['name']    =  $item->name;
-            $nestedData['position']=  $item->position;
+            $nestedData['title']   =  $item->title;
             $nestedData['id']      =  $item->id;
-            $nestedData['image']   =  ImageHelper::getUrl($item->image, 'team');
-            $nestedData['edit']    =  route('team.edit', ['id' => $item->id]);
-            $nestedData['delete']  =  route('team.delete', ['id' => $item->id]);
-            $nestedData['enabled']  =  $item->enabled;
+            $nestedData['image']   =  ImageHelper::getUrl($item->image, 'solution');
+            $nestedData['edit']    =  route('solutions.edit', ['id' => $item->id]);
+            $nestedData['delete']  =  route('solutions.delete', ['id' => $item->id]);
+            $nestedData['enabled'] =  $item->enabled;
+            $nestedData['type']    =  $item->type;
+            $nestedData['typeName']    =  $solutionTypes[$item->type];
             
             $data[] = $nestedData;
         }
@@ -135,14 +135,14 @@ class TeamService
      * @param int $id
      * @return mixed
      */
-    public function switchStatus(int $id):Team
+    public function switchStatus(int $id):Solution
     {
-        $team = Team::findOrFail($id);
-        $team->enabled = !$team['enabled'];
+        $solution = Solution::findOrFail($id);
+        $solution->enabled = !$solution['enabled'];
     
-        $team->save();
+        $solution->save();
         
-        return $team;
+        return $solution;
     }
     
     /**
@@ -157,15 +157,15 @@ class TeamService
         DB::beginTransaction();
         
         try {
-            $team = Team::createTeam($data);
+            $solution = Solution::createSolution($data);
             
             # These methods must be performed
             # in the order in which they are written
-            $team ->save();
+            $solution ->save();
             
-            $this->createName($team, $data);
+            $this->createName($solution, $data);
             
-            $this->resizeImage($image, $team->image);
+            $this->resizeImage($image, $solution->image);
             
             DB::commit();
             
@@ -190,11 +190,11 @@ class TeamService
     {
         try {
             DB::beginTransaction();
+    
+            $solution = $this->getById($data['id']);
             
-            $team = $this->getById($data['id']);
-            
-            $oldName = $team->image;
-            $team->editTeam($data);
+            $oldName = $solution->image;
+            $solution->editSolution($data);
             
             if ($data['image'] !== null) {
                 
@@ -202,18 +202,18 @@ class TeamService
                 # in the order in which they are written
                 
                 # first - create a new name and save all data
-                $this->createName($team, $data);
+                $this->createName($solution, $data);
                 
                 # second
-                $this->resizeImage($image, $team->image);
+                $this->resizeImage($image, $solution->image);
             }
             
             # If the user does not change the picture
             # when loading - i save the name of the
             # picture as it was before
             if ($data['image'] == null) {
-                $team->image = $oldName;
-                $team->save();
+                $solution->image = $oldName;
+                $solution->save();
             }
             
             DB::commit();
@@ -237,32 +237,32 @@ class TeamService
      */
     public function delete(int $id)
     {
-        $team = $this->getById($id);
+        $solution = $this->getById($id);
         
-        if ($team->image) {
-            ImageHelper::deleteLocalImage(config('filepath.image.team') . DIRECTORY_SEPARATOR . $team->image);
+        if ($solution->image) {
+            ImageHelper::deleteLocalImage(config('filepath.image.solution') . DIRECTORY_SEPARATOR . $solution->image);
         }
-        
-        $team->delete();
+    
+        $solution->delete();
     }
 
     /**
-     * @param Team $team
+     * @param Solution $solution
      * @param array $data
      * @return bool
      *
      * Create new name for picture and save new name
      */
-    public function createName(Team $team, array $data)
+    public function createName(Solution $solution, array $data)
     {
         # Receiving a file type
         $type = pathinfo($data['image'], PATHINFO_EXTENSION);
         
         # Record a new name
-        $team->image = $team->id . '.' . $type;
+        $solution->image = $solution->id . '.' . $type;
         
         # Save a new name
-        $team ->save();
+        $solution ->save();
     }
     
     /**
@@ -277,12 +277,12 @@ class TeamService
     public function resizeImage(UploadedFile $image, string $imageName)
     {
         # Create path for save
-        $iconPath = config('filepath.image.team') . DIRECTORY_SEPARATOR . $imageName;
+        $iconPath = config('filepath.image.solution') . DIRECTORY_SEPARATOR . $imageName;
         $path = public_path($iconPath);
         
         $file = new Filesystem();
         # path for checking the existence of a directory
-        $pathDir = public_path() . config('filepath.image.team');
+        $pathDir = public_path() . config('filepath.image.solution');
         
         try {
             # If there is no directory, create a directory
@@ -297,8 +297,8 @@ class TeamService
             
             # Checking size of the image and save it
             $resize = [];
-            if (!ImageSizeHelper::compareSize($image, 263, 320)) {
-                $resize = [263, 320];
+            if (!ImageSizeHelper::compareSize($image, 350, 425)) {
+                $resize = [350, 425];
             }
             ImageHelper::createImage($image, $iconPath, $resize);
             
@@ -306,5 +306,17 @@ class TeamService
         } catch(\Exception $e) {
             return 'Error while saving: ' . $e->getMessage();
         }
+    }
+    
+    /**
+     * Get solution's types
+
+     * @return array
+     */
+    public function getSolutionTypes()
+    {
+        return array_map(function($item) {
+            return Ucfirst(str_replace('_', ' ', $item));
+        }, Solution::getTypesById());
     }
 }

@@ -42,4 +42,15 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->namespace('Admin')->group
     //Quotes api
     Route::post('api/quotes/{id}/switch-status', 'Api\QuotesApiController@switchStatus');
     Route::post('api/quotes', 'Api\QuotesApiController@index');
+    
+    //Solutions
+    Route::get('solutions', 'SolutionsController@index')->name('solutions.index');
+    Route::get('solutions/{id}/edit', 'SolutionsController@edit')->name('solutions.edit');
+    Route::get('solutions/create', 'SolutionsController@create')->name('solutions.create');
+    Route::delete('solutions/{id}', 'SolutionsController@delete')->name('solutions.delete');
+    Route::put('solutions/{id}/edit', 'SolutionsController@update')->name('solutions.update');
+    Route::post('solutions/store', 'SolutionsController@store')->name('solutions.store');
+    //Solutions api
+    Route::post('api/solutions/{id}/switch-status', 'Api\SolutionsApiController@switchStatus');
+    Route::post('api/solutions', 'Api\SolutionsApiController@index');
 });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\QuotesService;
-use App\Http\Requests\Admin\QuotesRequest;
+use App\Http\Requests\Admin\QuoteRequest;
 
 class QuotesController extends Controller
 {
@@ -43,10 +43,10 @@ class QuotesController extends Controller
     }
     
     /**
-     * @param QuotesRequest $request
+     * @param QuoteRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(QuotesRequest $request)
+    public function store(QuoteRequest $request)
     {
         #Preparation of all data
         $dataAll = $request->all();
@@ -78,11 +78,11 @@ class QuotesController extends Controller
      * Update info and save
      *
      * @param int $id
-     * @param QuotesRequest $request
+     * @param QuoteRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, QuotesRequest $request)
+    public function update($id, QuoteRequest $request)
     {
         # Preparation of all data
         $dataAll = $request->all();

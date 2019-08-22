@@ -15,7 +15,7 @@ return [
 
     'title' => 'HUH School',
 
-    'title_prefix' => 'HUH School',
+    'title_prefix' => 'HUH School ',
 
     'title_postfix' => '',
 
@@ -116,6 +116,11 @@ return [
             'text' => 'Team',
             'url'  => 'admin/team',
             'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Solutions',
+            'url'  => 'admin/solutions',
+            'icon' => 'fas fa-fw fa-coins',
         ],
         [
             'text'        => 'Languages',
