@@ -306,4 +306,14 @@ class TranslationService
 
         return $result;
     }
+    
+    /**
+     * Get languages without default language
+     *
+     * @return Language
+     */
+    public function getNotDefaultLanguages()
+    {
+        return Language::where('locale', '!=', Language::DEFAULT_LOCALE)->get();
+    }
 }

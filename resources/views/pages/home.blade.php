@@ -9,14 +9,14 @@
         <div class="js-height-full">
             <div class="home-content container">
                 <div class="home-text">
-                    <h1 class="hs-line-11 font-alt mb-50 mb-xs-30">
+                    <h1 class="hs-line-8 font-alt mb-50 mb-xs-30">
                         {{ __('home.h1_high_usage_hub') }}
                     </h1>
                     <h2 class="hs-line-11 font-alt mb-50 mb-xs-30">
                         {{ __('home.h2_transformation_made_inclusive') }}
                     </h2>
                     <div class="local-scroll">
-                        <a href="{{ route('team') }}" class="btn btn-mod btn-medium btn-round hidden-xs">{{ __('home.button_our_teams') }}</a>
+                        <a href="{{ route('contact') }}" class="btn btn-mod btn-medium btn-round hidden-xs">{{ __('home.button_contact') }}</a>
                         <span class="hidden-xs">&nbsp;</span>
                         <a href="{{ route('solution') }}" class="btn btn-mod btn-medium btn-round lightbox mfp-iframe">{{ __('home.button_our_solutions') }}</a>
                     </div>
@@ -35,8 +35,8 @@
             </h2>
             <div class="section-text">
                 <div class="row">
-                    <div class="col-md-4 mb-sm-50 mb-xs-30">
-                        <img src="images/mobile-app.png" />
+                    <div class="col-md-4 mb-sm-50 mb-xs-30 relative">
+                        <img class="platform-img" src="images/mobile-app.png" />
                     </div>
                     <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
                         {{ __('home.block_platform_sub_text1') }}
@@ -66,28 +66,28 @@
         </div>
     </section>
     <section class="page-section">
-        <div class="container relative">
+        {{--<div class="container relative">
             <div class="row">
                 <div class="col-md-12 section-title font-alt">
-                    <a href="{{ route('team') }}" class="section-more section-team-more right">
+                    <a href="#" class="section-more section-team-more right">
                         {{ __('home.block_team_learn_mere') }}
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <div class="container relative">
             <div class="section-text mb-50 mb-sm-20">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30 text-justify">
                         {{ __('home.block_team_sub_text1') }}
                     </div>
 
-                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30 text-justify">
                         {{ __('home.block_team_sub_text2') }}
                     </div>
 
-                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30 text-justify">
                         {{ __('home.block_team_sub_text3') }}
                     </div>
 
@@ -111,38 +111,24 @@
                     </div>
                 </div>
             </div>
-            @if ($team)
+            @if ($solutions)
                 <div class="row multi-columns-row">
-                    @foreach ($team as $index => $member)
+                    @foreach ($solutions as $index => $solution)
                         <div class="col-sm-6 col-md-3 col-lg-3 mb-md-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
                             <div class="team-item">
                                 <div class="team-item-image">
-                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($member->image, 'team') }}" alt="{{ $member->name }}" />
-                                    {{--<div class="team-item-detail">
-                                        <h4 class="font-alt normal">Nice to meet!</h4>
-                                        <p>
-                                            Curabitur augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique porta.
-                                        </p>
-                                        <div class="team-social-links">
-                                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                        </div>
-                                    </div>--}}
+                                    <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="{{ $solution->title }}" />
                                 </div>
                                 <div class="team-item-descr font-alt">
                                     <div class="team-item-name">
-                                        {{ $member->name }}
-                                    </div>
-                                    <div class="team-item-role">
-                                        {{ $member->position }}
+                                        {{ $solution->getTitle() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div class="align-center pt-4">
+                <div class="align-center pt-5">
                     <a href="{{ route('solution') }}" class="section-more font-alt link-more">
                         {{ __('home.block_our_solutions_learn_mere') }}
                         <i class="fa fa-angle-right"></i>
@@ -160,27 +146,30 @@
                     <div class="mt-140 mt-lg-80 mb-140 mb-lg-80">
                         <div class="banner-content">
                             <h3 class="banner-heading font-alt">{{ __('home.block_awards_title') }}</h3>
+                            <div class="banner-decription">
+                                {{ __('home.block_awards_sub_text') }}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8 wow fadeInUp">
+                <div class="col-sm-8 mt-70 wow fadeInUp">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-1.png') }}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-2.png') }}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-3.png') }}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-4.png') }}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-5.png') }}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <img src="{{ asset('static/image/awards/awards-6.png') }}">
                         </div>
                     </div>
@@ -190,7 +179,7 @@
     </section>
     <!-- End Call Action Section -->
     <!-- Section -->
-    <section class="page-section">
+    <section class="page-section pb-30">
         <div class="container relative">
             <div class="row">
                 <div class="col-md-5 col-lg-4 mb-sm-40">
@@ -210,8 +199,8 @@
                 </div>
                 <div class="col-md-7 offset-lg-1">
                     <!-- Work Gallery -->
-                    <div class="work-full-media mt-0 white-shadow wow fadeInUp">
-                        <img src="images/promo-4.png" alt="" />
+                    <div class="work-full-media mt-0 white-shadow text-center wow fadeInUp">
+                        <img src="{{ asset('images/ia-solution.png') }}" width="400" alt="" />
                     </div>
                     <!-- End Work Gallery -->
                 </div>
@@ -225,7 +214,7 @@
         <div class="container relative">
             <div class="row">
                 <div class="col-md-7 mb-sm-40">
-                    <img src="images/promo-3.png" alt="" />
+                    <img src="{{ asset('images/promo-3.png') }}" alt="" />
                 </div>
                 <div class="col-md-5 col-lg-4 offset-lg-1">
                     <!-- About Project -->

@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Solution;
+use App\Models\Solution\Solution;
 use App\Helpers\{
     ImageHelper, ImageSizeHelper
 };
+use App\Models\Solution\Translation;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Filesystem\Filesystem;
@@ -74,7 +75,8 @@ class SolutionsService
             1 => 'enabled',
             2 => 'image',
             3 => 'title',
-            4 => 'type',
+            4 => 'text',
+            5 => 'type',
         ];
         
         $data = [];
@@ -109,6 +111,7 @@ class SolutionsService
         {
             $nestedData['index']   =  $key + 1;
             $nestedData['title']   =  $item->title;
+            $nestedData['text']    =  $item->text ?? '';
             $nestedData['id']      =  $item->id;
             $nestedData['image']   =  ImageHelper::getUrl($item->image, 'solution');
             $nestedData['edit']    =  route('solutions.edit', ['id' => $item->id]);
@@ -166,7 +169,19 @@ class SolutionsService
             $this->createName($solution, $data);
             
             $this->resizeImage($image, $solution->image);
-            
+
+            if (!empty($data['translation'])) {
+                foreach ($data['translation'] as $locale => $localData) {
+                    Translation::updateOrCreate([
+                        'locale' => $locale,
+                        'solution_id' => $solution->id,
+                    ], [
+                        'title' => $localData['title'],
+                        'text' => $localData['text']
+                    ]);
+                }
+            }
+
             DB::commit();
             
             return true;
@@ -188,7 +203,7 @@ class SolutionsService
      */
     public function edit(array $data, $image):bool
     {
-        try {
+        //try {
             DB::beginTransaction();
     
             $solution = $this->getById($data['id']);
@@ -215,17 +230,29 @@ class SolutionsService
                 $solution->image = $oldName;
                 $solution->save();
             }
-            
+
+            if (!empty($data['translation'])) {
+                foreach ($data['translation'] as $locale => $localData) {
+                    Translation::updateOrCreate([
+                        'locale' => $locale,
+                        'solution_id' => $solution->id,
+                    ], [
+                        'title' => $localData['title'],
+                        'text' => $localData['text']
+                    ]);
+                }
+            }
+
             DB::commit();
             
             return true;
             
-        } catch(\Exception $e) {
+        /*} catch(\Exception $e) {
             
             DB::rollback();
             
             return false;
-        }
+        }*/
     }
     
     /**
@@ -323,17 +350,10 @@ class SolutionsService
     /**
      * Get solutions by types
      *
-     * @param $type
      * @return array
      */
-    public function getByTypes($type = null)
+    public function getByTypes()
     {
-        if ($type) {
-            return [
-                $type => Solution::byType($type)->get(),
-            ];
-        }
-
         return [
             'global' => Solution::byType(Solution::TYPE_GLOBAL)->enabled()->get(),
             'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->enabled()->get(),

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\LanguageService;
 use App\Services\QuotesService;
 use App\Http\Requests\Admin\QuoteRequest;
 
 class QuotesController extends Controller
 {
     private $quotesService;
+    private $languageService;
     
     protected const DS = DIRECTORY_SEPARATOR;
     
@@ -17,9 +19,10 @@ class QuotesController extends Controller
      *
      * @param QuotesService $quotesService
      */
-    public function __construct(QuotesService $quotesService)
+    public function __construct(QuotesService $quotesService, LanguageService $languageService)
     {
         $this->quotesService = $quotesService;
+        $this->languageService = $languageService;
     }
     
     /**
@@ -39,7 +42,9 @@ class QuotesController extends Controller
      */
     public function create()
     {
-        return view('admin.quotes.create');
+        $localeTypes = $this->languageService->getAllLocalsForSelect();
+
+        return view('admin.quotes.create', compact('localeTypes'));
     }
     
     /**
@@ -70,8 +75,9 @@ class QuotesController extends Controller
     {
         # get object
         $quote = $this->quotesService->getById($id);
-        
-        return view('admin.quotes.edit', compact('quote'));
+        $localeTypes = $this->languageService->getAllLocalsForSelect();
+
+        return view('admin.quotes.edit', compact('quote', 'localeTypes'));
     }
     
     /**
@@ -105,7 +111,7 @@ class QuotesController extends Controller
      *
      * Delete this field
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $this->quotesService->delete($id);
     }

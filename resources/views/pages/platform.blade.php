@@ -65,7 +65,7 @@
             <div class="row multi-columns-row">
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
                     <div class="post-prev-img">
-                        <img src="{{ asset('images/stub.jpg') }}" alt="" />
+                        <img src="{{ asset('images/high.png') }}" alt="" />
                     </div>
                     <div class="post-prev-title font-alt">
                         {{ __('platform.huh_block_high_title') }}
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.2s" data-wow-duration="2s">
                     <div class="post-prev-img">
-                        <img src="{{ asset('images/stub.jpg') }}" alt="" />
+                        <img src="{{ asset('images/usage.png') }}" alt="" />
                     </div>
                     <div class="post-prev-title font-alt">
                         {{ __('platform.huh_block_usage_title') }}
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.3s" data-wow-duration="2s">
                     <div class="post-prev-img">
-                        <img src="{{ asset('images/stub.jpg') }}" alt="" />
+                        <img src="{{ asset('images/hub.png') }}" alt="" />
                     </div>
                     <div class="post-prev-title font-alt">
                         {{ __('platform.huh_block_hub_title') }}
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 banner-image wow fadeInUp">
-                    <img src="{{ asset('images/promo-1.png') }}" alt="" />
+                    <img src="{{ asset('images/platform-banner.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                         </p>
                     </div>
                     <div class="col-sm-6 mb-sm-50 mb-xs-30">
-                        <h4 class="mt-0 font-alt">{{ __('platform.choose_block_sub1_title') }}</h4>
+                        <h4 class="mt-0 font-alt">{{ __('platform.choose_block_sub2_title') }}</h4>
                         <p>
                             {{ __('platform.choose_block_sub2_text') }}
                         </p>

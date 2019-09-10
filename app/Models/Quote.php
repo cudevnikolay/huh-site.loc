@@ -19,6 +19,7 @@ class Quote extends Model
         $quote->text = $data['text'];
         $quote->author = $data['author'];
         $quote->enabled = isset($data['enabled']) ? 1 : 0;
+        $quote->locale = $data['locale'];
         
         return $quote;
     }
@@ -34,6 +35,7 @@ class Quote extends Model
         $this->text = $data['text'];
         $this->author = $data['author'];
         $this->enabled  = $data['enabled'];
+        $this->locale = $data['locale'];
     }
     
     /**

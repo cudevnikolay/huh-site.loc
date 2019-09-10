@@ -90,6 +90,12 @@ const quotesTable = table.DataTable({
             },
         },
         {
+            "data": "locale",
+            render: function (data, type, row) {
+                return `${data}`;
+            },
+        },
+        {
             "data": "title",
             render: function (data, type, row) {
                 return `${data}`;

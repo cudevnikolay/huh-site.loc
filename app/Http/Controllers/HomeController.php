@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\{
-    TeamService, QuotesService
-};
+use App\Services\{SolutionsService, QuotesService};
 
 class HomeController extends Controller
 {
@@ -25,14 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $teamService = new TeamService();
-        $team = $teamService->getActiveByLimit(4);
+        $solutionsService = new SolutionsService();
+        $solutions = $solutionsService->getActiveByLimit(4);
     
         $quotesService = new QuotesService();
-        $quotes = $quotesService->getAllActive();
+        $quotes = $quotesService->getAllActiveByLocale(config('app.locale'));
 
         return view('pages.home', [
-            'team' => $team,
+            'solutions' => $solutions,
             'quotes' => $quotes,
         ]);
     }

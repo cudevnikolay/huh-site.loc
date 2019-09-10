@@ -3,7 +3,7 @@
 return [
     'h1_high_usage_hub' => 'High Usage Hub',
     'h2_transformation_made_inclusive' => 'Transformation. Made Inclusive.',
-    'button_our_teams' => 'Our teams',
+    'button_contact' => 'Contact',
     'button_our_solutions' => 'Our solutions',
     'block_platform_title' => 'High Usage Hub',
     'block_platform_sub_text1' => 'H.U.H. Platform is a mobile application integrating chatbots for each of our solutions. Today, we inform ourselves, we interact, we learn with our smartphone.',
@@ -18,6 +18,7 @@ return [
     'block_our_solutions_sub_text' => 'Nos solutions permettent de transformer rapidement et sans contrainte l’ensemble de vos collaborateurs aux enjeux de votre entreprise.',
     'block_our_solutions_learn_mere' => 'Voir toutes nos formations',
     'block_awards_title' => 'Les awards',
+    'block_awards_sub_text' => 'Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor.',
     'block_ia_solutions_title' => 'La solution IA',
     'block_ia_solutions_sub_text' => 'Nous avons développé un algorithme qui permet d’affiner nos solutions en fonction de chaque collaborateur. Ainsi, nous créons automatiquement des programmes uniques et adaptés',
     'block_ia_solutions_learn_more' => 'En savoir plus',

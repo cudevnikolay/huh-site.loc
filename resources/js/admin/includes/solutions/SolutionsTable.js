@@ -104,6 +104,12 @@ const solutionsTable = table.DataTable({
             },
         },
         {
+            "data": "text",
+            render: function (data, type, row) {
+                return `${data}`;
+            },
+        },
+        {
             "data": "typeName",
             render: function (data, type, row) {
                 return `${data}`;

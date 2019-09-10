@@ -121,7 +121,7 @@ class TeamController extends Controller
      *
      * Delete this field
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $this->teamService->delete($id);
     }

@@ -146,9 +146,6 @@ class LanguageRepository extends Repository
      */
     public function availableLocales()
     {
-//        if ($this->config->has('translator.locales')) {
-//            return $this->config->get('translator.locales');
-//        }
         if ($this->config->get('translator.source') !== 'files') {
             if ($this->tableExists()) {
                 $locales = $this->model->active()->distinct()->get()->pluck('locale')->toArray();

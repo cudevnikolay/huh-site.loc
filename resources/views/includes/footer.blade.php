@@ -6,7 +6,7 @@
                 <div class="widget">
                     <h5 class="widget-title font-alt">{{ __('footer.about_block_title') }}</h5>
                     <div class="widget-body">
-                        <div class="widget-text clearfix">
+                        <div class="widget-text text-justify clearfix">
                             {{ __('footer.about_block_text') }}
                         </div>
                     </div>

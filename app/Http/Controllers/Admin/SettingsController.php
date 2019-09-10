@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\SettingsService;
 use App\Http\Requests\Admin\ContactInfoRequest;
+use \EasySVG;
 
 class SettingsController extends Controller
 {

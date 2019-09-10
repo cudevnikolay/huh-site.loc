@@ -7,12 +7,7 @@
 @section('content')
     <!-- Split Section -->
     <section class="split-section bg-gray-lighter pt-120">
-        <div class="clearfix container relative">
-            <div class="split-section-headings right">
-                <div class="ssh-table">
-                    <div class="ssh-cell page-section bg-scroll" data-background="{{ asset('images/full-width-images/section-bg-2.jpg') }}"></div>
-                </div>
-            </div>
+        <div class="clearfix container relative iaSolution-container">
             <div class="split-section-content">
                 <div class="pr-4 left">
                     <div class="text">
@@ -56,6 +51,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="split-section-headings right">
+                <div class="ssh-table ia-solution-image">
+                    <div class="ssh-cell page-section bg-scroll" data-background="{{ asset('images/graph_mobile_app.png') }}"></div>
                 </div>
             </div>
         </div>

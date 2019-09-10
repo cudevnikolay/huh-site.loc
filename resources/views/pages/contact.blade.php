@@ -43,7 +43,10 @@
                                     {{ __('contact.email') }}
                                 </div>
                                 <div class="ci-text">
-                                    <a href="mailto:{{ Setting::get('email') }}">{{ Setting::get('email') }}</a>
+                                    <svg class="notcopy" width="210px" height="22px"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <text x="0" y="14" font-size="16">{{ Setting::get('email') }}</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +81,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-xs-40">
-                    <img src="{{ asset('images/stub-2.jpg') }}" width="100%" alt="" />
+                    <img src="{{ asset('images/contact.jpg') }}" width="100%" alt="" />
                 </div>
                 <div class="col-sm-6">
                     <form class="form contact-form" id="contact_form">

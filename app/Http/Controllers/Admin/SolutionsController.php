@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SolutionRequest;
-use App\Services\SolutionsService;
+use App\Services\{SolutionsService, TranslationService};
 
 class SolutionsController extends Controller
 {
     private $solutionService;
+    private $translationService;
 
     protected const DS = DIRECTORY_SEPARATOR;
     
@@ -17,9 +18,10 @@ class SolutionsController extends Controller
      *
      * @param SolutionsService $solutionService
      */
-    public function __construct(SolutionsService $solutionService)
+    public function __construct(SolutionsService $solutionService, TranslationService $translationService)
     {
         $this->solutionService = $solutionService;
+        $this->translationService = $translationService;
     }
     
     /**
@@ -40,7 +42,9 @@ class SolutionsController extends Controller
     public function create()
     {
         $solutionTypes = $this->solutionService->getSolutionTypes();
-        return view('admin.solutions.create', compact('solutionTypes'));
+        $translationLanguages = $this->translationService->getNotDefaultLanguages();
+
+        return view('admin.solutions.create', compact('solutionTypes', 'translationLanguages'));
     }
     
     /**
@@ -81,8 +85,13 @@ class SolutionsController extends Controller
         # get object
         $solution = $this->solutionService->getById($id);
         $solutionTypes = $this->solutionService->getSolutionTypes();
+        $translationLanguages = $this->translationService->getNotDefaultLanguages();
 
-        return view('admin.solutions.edit', compact('solution', 'solutionTypes'));
+        return view('admin.solutions.edit', compact(
+            'solution',
+            'solutionTypes',
+            'translationLanguages'
+        ));
     }
     
     /**
@@ -123,7 +132,7 @@ class SolutionsController extends Controller
      *
      * Delete this field
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $this->solutionService->delete($id);
     }

@@ -1,4 +1,13 @@
 <div class="box-body">
+    <div class="form-group {{$errors->has('locale') ? 'has-error' : ''}}">
+        {{ Form::label('locale', 'Locale', ['class' => 'col-md-2 col-sm-2 col-xs-5 control-label']) }}
+        <div class="col-md-4 col-sm-10 col-xs-12">
+            {!! Form::select('locale', $localeTypes, isset($quote->locale) ? $quote->locale : null, ['class' => 'form-control']) !!}
+            @if ($errors->has('locale'))
+                <span class="help-block">{{ $errors->first('locale') }}</span>
+            @endif
+        </div>
+    </div>
     <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
         {{ Form::label('title', 'Title', ['class' => 'col-md-2 col-sm-2 col-xs-5 control-label']) }}
         <div class="col-md-4 col-sm-10 col-xs-12">

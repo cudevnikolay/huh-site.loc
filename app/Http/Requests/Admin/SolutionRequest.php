@@ -27,11 +27,13 @@ class SolutionRequest extends FormRequest
             return [
                 'image'         => 'required|mimes:jpeg,jpg,bmp,png|max:1024',
                 'title'           => 'required|max:255',
+                'text'           => 'required|max:255',
             ];
         } else {
             return [
                 'image'         => 'mimes:jpeg,jpg,bmp,png|max:1024',
                 'title'           => 'required|max:255',
+                'text'           => 'required|max:255',
             ];
         }
     }

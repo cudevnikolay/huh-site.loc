@@ -12,7 +12,7 @@ Route::group([
 ],function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/platform', 'PageController@platform')->name('platform');
-    Route::get('/team', 'PageController@team')->name('team');
+    //Route::get('/team', 'PageController@team')->name('team');
     Route::get('/solution', 'PageController@solution')->name('solution');
     Route::get('/training', 'PageController@training')->name('training');
     Route::get('/ia-solution', 'PageController@iaSolution')->name('ia-solution');

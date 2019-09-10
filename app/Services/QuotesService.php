@@ -25,7 +25,18 @@ class QuotesService
     {
         return Quote::enabled()->get();
     }
-    
+
+    /**
+     * Get all active Quotes by locale
+     *
+     * @param $locale
+     * @return Quote
+     */
+    public function getAllActiveByLocale($locale)
+    {
+        return Quote::enabled()->where('locale', $locale)->get();
+    }
+
     /**
      * Get all active Quotes
      *
@@ -66,9 +77,10 @@ class QuotesService
         $columns = [
             0 => 'id',
             1 => 'enabled',
-            2 => 'title',
-            3 => 'text',
-            4 => 'author'
+            2 => 'locale',
+            3 => 'title',
+            4 => 'text',
+            5 => 'author'
         ];
         
         $data = [];
@@ -105,6 +117,7 @@ class QuotesService
         foreach ($quotes as $key => $item)
         {
             $nestedData['index']   =  $key + 1;
+            $nestedData['locale']  =  $item->locale;
             $nestedData['title']   =  $item->title;
             $nestedData['text']    =  $item->text;
             $nestedData['author']  =  $item->author;

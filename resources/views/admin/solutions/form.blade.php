@@ -1,6 +1,6 @@
 <div class="box-body">
     <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
-        {{ Form::label('title', 'Title', ['class' => 'col-md-2 col-sm-2 col-xs-5 control-label']) }}
+        {{ Form::label('title', 'Title (EN)', ['class' => 'col-md-2 col-sm-2 col-xs-5 control-label']) }}
         <div class="col-md-4 col-sm-10 col-xs-12">
             {{ Form::text('title', isset($solution->title) ? $solution->title : null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
             @if ($errors->has('title'))
@@ -14,6 +14,15 @@
             {!! Form::select('type', $solutionTypes, isset($solution->type) ? $solution->type : null, ['class' => 'form-control']) !!}
             @if ($errors->has('type'))
                 <span class="help-block">{{ $errors->first('type') }}</span>
+            @endif
+        </div>
+    </div>
+    <div class="form-group {{$errors->has('text') ? 'has-error' : ''}}">
+        {{ Form::label('text', 'Text (EN)', ['class' => 'col-md-2 col-sm-2 col-xs-5 control-label']) }}
+        <div class="col-md-4 col-sm-10 col-xs-12">
+            {{ Form::text('text', isset($solution->text) ? $solution->text : null, ['class' => 'form-control', 'placeholder' => 'Text']) }}
+            @if ($errors->has('text'))
+                <span class="help-block">{{ $errors->first('text') }}</span>
             @endif
         </div>
     </div>
@@ -59,6 +68,25 @@
             </div>
         </div>
     </div>
+    @if (!empty($translationLanguages))
+        <h4 class="page-header">Translations</h4>
+        @foreach($translationLanguages as $translationLanguage)
+            <section class="group template-locale-block">
+                <div class="form-group">
+                    {{ Form::label('translation_title', "Title - " . $translationLanguage['name'], ['class' => 'col-md-2 col-sm-2 control-label']) }}
+                    <div class="col-md-10 col-sm-10">
+                        {{ Form::text("translation[{$translationLanguage['locale']}][title]", (isset($solution->id) && $solutionTranslation = $solution->getTranslationByLocale($translationLanguage['locale'])) ? $solutionTranslation->title : '', ['class' => 'form-control', 'placeholder' => 'Title']) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('translation_text', "Text - " . $translationLanguage['name'], ['class' => 'col-md-2 col-sm-2 control-label']) }}
+                    <div class="col-md-10 col-sm-10">
+                        {{ Form::text("translation[{$translationLanguage['locale']}][text]", (isset($solution->id) && $solutionTranslation = $solution->getTranslationByLocale($translationLanguage['locale'])) ? $solutionTranslation->text : '', ['class' => 'form-control', 'placeholder' => 'Text']) }}
+                    </div>
+                </div>
+            </section>
+        @endforeach
+    @endif
 </div>
 <div class="box-footer">
     <div class="row">

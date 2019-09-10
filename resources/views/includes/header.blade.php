@@ -19,9 +19,9 @@
                 <li>
                     <a href="{{ route('solution') }}">{{ __('menu.item_our_solutions') }}</a>
                 </li>
-                <li>
+                {{--<li>
                     <a href="{{ route('team') }}">{{ __('menu.item_teams') }}</a>
-                </li>
+                </li>--}}
                 <li>
                     <a href="{{ route('training') }}">{{ __('menu.item_training') }}</a>
                 </li>

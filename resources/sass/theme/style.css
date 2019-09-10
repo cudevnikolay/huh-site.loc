@@ -6457,3 +6457,28 @@ section:hover .small-item-carousel .owl-next{
     .multi-columns-row .col-lg-2:nth-child(6n + 7) { clear: left; }
     .multi-columns-row .col-lg-1:nth-child(12n + 13) { clear: left; }
 }
+
+/********Custom Styles***********/
+.platform-img {
+    max-height: 100%;
+    position: absolute;
+    margin-left: 60px;
+}
+@media (min-width: 768px) {
+    .iaSolution-container {
+        display: flex;
+        align-items: center;
+    }
+    .ia-solution-image {
+        min-height: 550px;
+    }
+}
+
+.notcopy {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
