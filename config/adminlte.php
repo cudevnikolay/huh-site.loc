@@ -112,11 +112,11 @@ return [
             'url'         => '/admin',
             'icon'        => 'fas fa-fw fa-file'
         ],
-        [
+        /*[
             'text' => 'Team',
             'url'  => 'admin/team',
             'icon' => 'fas fa-fw fa-user',
-        ],
+        ],*/
         [
             'text' => 'Solutions',
             'url'  => 'admin/solutions',
