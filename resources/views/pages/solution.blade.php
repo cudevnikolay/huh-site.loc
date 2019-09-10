@@ -79,9 +79,15 @@
                     @foreach ($solutions['industries'] as $index => $solution)
                         <!-- Team item -->
                         <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
-                            <div class="solution-item">
-                                <div class="solution-item-image">
+                            <div class="team-item">
+                                <div class="team-item-image">
                                     <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="" />
+
+                                    <div class="team-item-detail">
+                                        <p>
+                                            {{ $solution->getText() }}
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="team-item-descr font-alt">
                                     <div class="team-item-name">
@@ -115,9 +121,15 @@
                     @foreach ($solutions['languages'] as $index => $solution)
                         <!-- Team item -->
                         <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.{{ $index }}s">
-                            <div class="solution-item">
-                                <div class="solution-item-image">
+                            <div class="team-item">
+                                <div class="team-item-image">
                                     <img src="{{ \App\Helpers\ImageHelper::getUrl($solution->image, 'solution') }}" alt="{{ $solution->title }}" />
+
+                                    <div class="team-item-detail">
+                                        <p>
+                                            {{ $solution->getText() }}
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="team-item-descr font-alt">
                                     <div class="team-item-name">
