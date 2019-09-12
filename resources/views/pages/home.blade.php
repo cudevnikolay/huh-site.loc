@@ -121,13 +121,13 @@
 
                                     <div class="team-item-detail">
                                         <p>
-                                            {{ $solution->getText() }}
+                                            {{ $solution->text }}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="team-item-descr font-alt">
                                     <div class="team-item-name">
-                                        {{ $solution->getTitle() }}
+                                        {{ $solution->title }}
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                 <div class="col-md-7 offset-lg-1">
                     <!-- Work Gallery -->
                     <div class="work-full-media mt-0 white-shadow text-center wow fadeInUp">
-                        <img src="{{ asset('images/ia-solution.png') }}" width="400" alt="" />
+                        <img class="home-ia-solution-image" src="{{ asset('images/ia-solution.png') }}" width="400" alt="" />
                     </div>
                     <!-- End Work Gallery -->
                 </div>
@@ -220,7 +220,7 @@
         <div class="container relative">
             <div class="row">
                 <div class="col-md-7 mb-sm-40">
-                    <img src="{{ asset('images/promo-3.png') }}" alt="" />
+                    <img class="home-training-image" src="{{ asset('images/mobile_apps.png') }}" alt="" />
                 </div>
                 <div class="col-md-5 col-lg-4 offset-lg-1">
                     <!-- About Project -->

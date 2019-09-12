@@ -18,16 +18,16 @@
                     <div class="widget-body">
                         <ul class="clearlist widget-menu">
                             <li>
-                                <a href="#" title="">{{ __('footer.links_block_item1') }}<i class="fa fa-angle-right right"></i></a>
+                                <a href="{{ route('platform') }}" title="">{{ __('footer.links_block_item1') }}<i class="fa fa-angle-right right"></i></a>
                             </li>
                             <li>
-                                <a href="#" title="">{{ __('footer.links_block_item2') }} <i class="fa fa-angle-right right"></i></a>
+                                <a href="{{ route('solution') }}" title="">{{ __('footer.links_block_item2') }} <i class="fa fa-angle-right right"></i></a>
                             </li>
                             <li>
-                                <a href="#" title="">{{ __('footer.links_block_item3') }} <i class="fa fa-angle-right right"></i></a>
+                                <a href="{{ route('training') }}" title="">{{ __('footer.links_block_item3') }} <i class="fa fa-angle-right right"></i></a>
                             </li>
                             <li>
-                                <a href="#" title="">{{ __('footer.links_block_item4') }} <i class="fa fa-angle-right right"></i></a>
+                                <a href="{{ route('ia-solution') }}" title="">{{ __('footer.links_block_item4') }} <i class="fa fa-angle-right right"></i></a>
                             </li>
                         </ul>
                     </div>

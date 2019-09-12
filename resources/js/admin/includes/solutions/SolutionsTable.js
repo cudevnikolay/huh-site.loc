@@ -98,6 +98,12 @@ const solutionsTable = table.DataTable({
             "orderable": false
         },
         {
+            "data": "locale",
+            render: function (data) {
+                return `${data}`;
+            },
+        },
+        {
             "data": null,
             render: function (data, type, row) {
                 return `<a href="${data.edit}">${data.title}</a>`;

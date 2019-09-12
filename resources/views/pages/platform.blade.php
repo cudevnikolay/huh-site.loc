@@ -101,7 +101,7 @@
     </section>
     <!-- End Features Section -->
     <!-- Call Action Section -->
-    <section class="page-section pt-0 pb-0 banner-section bg-dark" data-background="#">
+    <section class="page-section pt-0 pb-0 banner-section bg-dark">
         <div class="container relative">
             <div class="row">
                 <div class="col-sm-6">

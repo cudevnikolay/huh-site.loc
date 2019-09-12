@@ -1,24 +1,14 @@
 <?php
 
-namespace App\Models\Solution;
+namespace App\Models;
 
-use App\Models\Language\Language;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Solution\Translation;
 
 class Solution extends Model
 {
     const TYPE_GLOBAL = 1;
     const TYPE_INDUSTRIES = 2;
     const TYPE_LANGUAGES = 3;
-    
-    /**
-     *  Each language may have several translations.
-     */
-    public function translations()
-    {
-        return $this->hasMany(Translation::class, 'solution_id', 'id');
-    }
 
     /**
      * Get solution's types
@@ -53,10 +43,11 @@ class Solution extends Model
     static public function createSolution($data)
     {
         $solution = new Solution();
+        $solution->locale   = $data['locale'];
         $solution->image    = $data['image'];
         $solution->title    = $data['title'];
-        $solution->text    = $data['text'];
-        $solution->type    = $data['type'];
+        $solution->text     = $data['text'];
+        $solution->type     = $data['type'];
         $solution->enabled  = isset($data['enabled']) ? 1 : 0;
 
         return $solution;
@@ -70,9 +61,10 @@ class Solution extends Model
     public function editSolution($data)
     {
         $this->image    = is_null($data['image']) ? $data['image'] : $this->image;
+        $this->locale    = $data['locale'];
         $this->title    = $data['title'];
-        $this->text    = $data['text'];
-        $this->type = $data['type'];
+        $this->text     = $data['text'];
+        $this->type     = $data['type'];
         $this->enabled  = $data['enabled'];
     }
     
@@ -99,50 +91,15 @@ class Solution extends Model
     }
 
     /**
-     * Get Translation by Locale
+     * Get by list locale
      *
+     * @param $query
      * @param $locale
      *
-     * @return Translation|null
+     * @return mixed
      */
-    public function getTranslationByLocale($locale)
+    public function scopeByLocale($query, $locale)
     {
-        return $this->translations()->where('locale', $locale)->first();
-    }
-    
-    /**
-     * Get Translation Title
-     *
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        $currentLocale = config('app.locale');
-        if ($currentLocale !== Language::DEFAULT_LOCALE) {
-            $translation = $this->getTranslationByLocale($currentLocale);
-            if ($translation && !empty($translation->title)) {
-                return $translation->title;
-            }
-        }
-
-        return $this->title;
-    }
-
-    /**
-     * Get Translation text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        $currentLocale = config('app.locale');
-        if ($currentLocale !== Language::DEFAULT_LOCALE) {
-            $translation = $this->getTranslationByLocale($currentLocale);
-            if ($translation && !empty($translation->text)) {
-                return $translation->text;
-            }
-        }
-
-        return $this->text;
+        return $query->where('locale', $locale);
     }
 }

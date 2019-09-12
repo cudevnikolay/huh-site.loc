@@ -36,6 +36,7 @@
                                 <th class="sortable sorting">#</th>
                                 <th class="sortable sorting">Active</th>
                                 <th class="sortable sorting">Image</th>
+                                <th class="sortable sorting">Locale</th>
                                 <th class="sortable sorting">Title</th>
                                 <th class="sortable sorting">Text</th>
                                 <th class="sortable sorting">Type</th>

@@ -6460,17 +6460,28 @@ section:hover .small-item-carousel .owl-next{
 
 /********Custom Styles***********/
 .platform-img {
-    max-height: 100%;
-    position: absolute;
-    margin-left: 60px;
+    max-height: 300px;
+    margin-left: 80px;
+}
+.home-ia-solution-image {
+    width: auto;
+    max-height: 350px;
+}
+.home-training-image {
+    max-height: 350px;
+}
+.ia-solution-image {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.ia-solution-image img {
+    max-height: 300px;
 }
 @media (min-width: 768px) {
     .iaSolution-container {
         display: flex;
         align-items: center;
-    }
-    .ia-solution-image {
-        min-height: 550px;
     }
 }
 

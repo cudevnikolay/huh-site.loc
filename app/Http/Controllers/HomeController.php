@@ -23,11 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $currentLocale = config('app.locale');
         $solutionsService = new SolutionsService();
-        $solutions = $solutionsService->getActiveByLimit(4);
+        $solutions = $solutionsService->getActiveLimitedByLocale($currentLocale, 4);
     
         $quotesService = new QuotesService();
-        $quotes = $quotesService->getAllActiveByLocale(config('app.locale'));
+        $quotes = $quotesService->getAllActiveByLocale($currentLocale);
 
         return view('pages.home', [
             'solutions' => $solutions,

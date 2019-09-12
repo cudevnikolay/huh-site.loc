@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Solution\Solution;
+use App\Models\Solution;
 use App\Helpers\{
     ImageHelper, ImageSizeHelper
 };
-use App\Models\Solution\Translation;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Filesystem\Filesystem;
@@ -34,7 +33,7 @@ class SolutionsService
     }
     
     /**
-     * Get all active Solutions
+     * Get limited active Solutions
      *
      * @param $count
      *
@@ -43,6 +42,19 @@ class SolutionsService
     public function getActiveByLimit($count)
     {
         return Solution::enabled()->limit($count)->get();
+    }
+    
+    /**
+     * Get limited active Solutions by locale
+     *
+     * @param $count
+     * @param $locale
+     *
+     * @return Solution
+     */
+    public function getActiveLimitedByLocale($locale, $count)
+    {
+        return Solution::enabled()->byLocale($locale)->limit($count)->get();
     }
     
     /**
@@ -74,9 +86,10 @@ class SolutionsService
             0 => 'id',
             1 => 'enabled',
             2 => 'image',
-            3 => 'title',
-            4 => 'text',
-            5 => 'type',
+            3 => 'locale',
+            4 => 'title',
+            5 => 'text',
+            6 => 'type',
         ];
         
         $data = [];
@@ -111,6 +124,7 @@ class SolutionsService
         {
             $nestedData['index']   =  $key + 1;
             $nestedData['title']   =  $item->title;
+            $nestedData['locale']  =  $item->locale;
             $nestedData['text']    =  $item->text ?? '';
             $nestedData['id']      =  $item->id;
             $nestedData['image']   =  ImageHelper::getUrl($item->image, 'solution');
@@ -170,18 +184,6 @@ class SolutionsService
             
             $this->resizeImage($image, $solution->image);
 
-            if (!empty($data['translation'])) {
-                foreach ($data['translation'] as $locale => $localData) {
-                    Translation::updateOrCreate([
-                        'locale' => $locale,
-                        'solution_id' => $solution->id,
-                    ], [
-                        'title' => $localData['title'],
-                        'text' => $localData['text']
-                    ]);
-                }
-            }
-
             DB::commit();
             
             return true;
@@ -229,18 +231,6 @@ class SolutionsService
             if ($data['image'] == null) {
                 $solution->image = $oldName;
                 $solution->save();
-            }
-
-            if (!empty($data['translation'])) {
-                foreach ($data['translation'] as $locale => $localData) {
-                    Translation::updateOrCreate([
-                        'locale' => $locale,
-                        'solution_id' => $solution->id,
-                    ], [
-                        'title' => $localData['title'],
-                        'text' => $localData['text']
-                    ]);
-                }
             }
 
             DB::commit();
@@ -354,10 +344,12 @@ class SolutionsService
      */
     public function getByTypes()
     {
+        $currentLocale = config('app.locale');
+
         return [
-            'global' => Solution::byType(Solution::TYPE_GLOBAL)->enabled()->get(),
-            'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->enabled()->get(),
-            'languages' => Solution::byType(Solution::TYPE_LANGUAGES)->enabled()->get(),
+            'global' => Solution::byType(Solution::TYPE_GLOBAL)->byLocale($currentLocale)->enabled()->get(),
+            'industries' => Solution::byType(Solution::TYPE_INDUSTRIES)->byLocale($currentLocale)->enabled()->get(),
+            'languages' => Solution::byType(Solution::TYPE_LANGUAGES)->byLocale($currentLocale)->enabled()->get(),
         ];
     }
 }

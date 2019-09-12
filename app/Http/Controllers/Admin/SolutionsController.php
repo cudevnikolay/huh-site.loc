@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SolutionRequest;
-use App\Services\{SolutionsService, TranslationService};
+use App\Services\{SolutionsService, LanguageService};
 
 class SolutionsController extends Controller
 {
     private $solutionService;
-    private $translationService;
+    private $languageService;
 
     protected const DS = DIRECTORY_SEPARATOR;
     
@@ -17,11 +17,12 @@ class SolutionsController extends Controller
      * SolutionsController constructor.
      *
      * @param SolutionsService $solutionService
+     * @param LanguageService $languageService
      */
-    public function __construct(SolutionsService $solutionService, TranslationService $translationService)
+    public function __construct(SolutionsService $solutionService, LanguageService $languageService)
     {
         $this->solutionService = $solutionService;
-        $this->translationService = $translationService;
+        $this->languageService = $languageService;
     }
     
     /**
@@ -42,9 +43,9 @@ class SolutionsController extends Controller
     public function create()
     {
         $solutionTypes = $this->solutionService->getSolutionTypes();
-        $translationLanguages = $this->translationService->getNotDefaultLanguages();
+        $localeTypes = $this->languageService->getAllLocalsForSelect();
 
-        return view('admin.solutions.create', compact('solutionTypes', 'translationLanguages'));
+        return view('admin.solutions.create', compact('solutionTypes', 'localeTypes'));
     }
     
     /**
@@ -85,12 +86,12 @@ class SolutionsController extends Controller
         # get object
         $solution = $this->solutionService->getById($id);
         $solutionTypes = $this->solutionService->getSolutionTypes();
-        $translationLanguages = $this->translationService->getNotDefaultLanguages();
+        $localeTypes = $this->languageService->getAllLocalsForSelect();
 
         return view('admin.solutions.edit', compact(
             'solution',
             'solutionTypes',
-            'translationLanguages'
+            'localeTypes'
         ));
     }
     
