@@ -20,3 +20,6 @@ user: `admin@admin.com`
 password: `123123`
 
 In the tab `Languages` you can add new Language, removes it, and edit exists translations.
+
+Create folder with permisions 775:
+`public/img/solution`
