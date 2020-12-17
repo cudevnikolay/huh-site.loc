@@ -23,7 +23,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "datatables.net": "^1.10.16"
+    "datatables.net": "^1.10.22"
   },
   "name": "site",
   "description": "<p align=\"center\"><img src=\"https://laravel.com/assets/img/components/logo-laravel.svg\"></p>",
